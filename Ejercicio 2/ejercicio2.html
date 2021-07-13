@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Pair Programming</title>
+    <style>
+        h2 { color: blue;}
+        div { border: 1px solid black; border-radius: 50%; display: flex; justify-content: center; align-items: center; background-color: white;}
+        #externo { width: 200px; height: 200px; margin: 30px;}
+        #medio { width: 150px; height: 150px; }
+        #interno { width: 100px; height: 100px;}
+    </style>
+</head>
+
+<body>
+    <h2>
+        Crear 3 círculos concéntricos en la vista, donde se disponga de un selector que me permita elegir entre los siguientes colores: rojo, verde, azul.
+        Si hago un click sobre uno de los círculos, lo rellenará del color seleccionado juntamente a los círculos que tenga por detrás: eso será el caso de estar habilitado el modo "superpuesto" en una casilla de checkbox, en caso contrario, sólo pintará la figura indicada. Disponer de un botón de reset, para borrar el color de todos los círculos. Si el ancho de la pantalla es inferior a 500px poner el fondo del documento web en color #eee (hacer esta operación al comienzo ó sobre un cambio en el ancho).
+    </h2>
+    <hr>
+
+    <main>
+        <select>
+            <option value="red">ROJO</option>
+            <option value="green">VERDE</option>
+            <option value="blue">AZUL</option>
+        </select>
+        
+        <input type="checkbox"> Superpuesto
+        <button>Reset</button>
+
+        <div id="externo">
+            <div id="medio">
+                <div id="interno"></div>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="Js/main.js"></script>
+
+</body>
+
+</html>
