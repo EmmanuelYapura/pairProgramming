@@ -1,4 +1,4 @@
-let colores = ['red','green','blue','black','aqua','yellow'] // RECORDAR QUE LOS COLORES DEBEN IR EN INGLES!
+let colores = ['red','green','blue','black','aqua','yellow'] 
 const $main = document.querySelector('main') 
 const $h2 = document.querySelectorAll('h2') 
 const $botones = document.querySelectorAll('button')  
@@ -14,7 +14,7 @@ $botones[0].addEventListener('click', () =>{
 })
 
 function cambiaColor(numero){
-    if(indice == null || (indice + numero) == colores.length){  //El null es importante para que comience en 0 y muestre red!
+    if(indice == null || (indice + numero) == colores.length){  
         indice = 0
     }else if((indice + numero) < 0){
         indice = colores.length - 1 
@@ -25,9 +25,9 @@ function cambiaColor(numero){
 }
 
 
-function muestraColores(color){         //Funcion para mostrar colores
+function muestraColores(color){         
     //console.log(color)       
-    $main.style.backgroundColor = color    //Cambia el color de fondo del elemento main
-    $h2[1].style.color = 'white'         //Pone las letras en blanco del elemento h2 que muestra los colores
-    $h2[1].innerText = color            //Modifica texto con el color que muestra el main
+    $main.style.backgroundColor = color    
+    $h2[1].style.color = 'white'         
+    $h2[1].innerText = color            
 }
