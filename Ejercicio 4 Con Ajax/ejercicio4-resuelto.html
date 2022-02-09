@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Pair Programming</title>
+    <style>
+        h2 { color: blue;}
+    </style>
+</head>
+
+<body>
+    <hr>
+    <h2>
+        Realizar un programa que lea este mismo archivo y devuelva un objeto donde figuren como claves las letras desde la a hasta la z en minúscula con el valor correspondiente al porcentaje de apariciones de dicho caracter. El objeto debe poseer como última clave un 'otras' para el resto de los casos.
+        Imprimir por consola el resultado.
+    </h2>
+    <hr>
+    
+    <script>
+
+        let xhr = new XMLHttpRequest
+        xhr.open('get','ejercicio4-resuelto.html')
+        xhr.addEventListener('load', () => {
+            if(xhr.status == 200) {
+
+                let contenido = xhr.response
+                console.log(contenido)
+                
+                let letras = contenido.split('')
+                console.log(letras)
+
+                // --------------------------------------------------------------------------------------
+                let resultados = {}
+                let cantidadCaracteres = letras.length
+                for(let letra of letras) {
+                    if(letra >= 'a' && letra <= 'z') {
+                        resultados[letra]? resultados[letra]++ : resultados[letra] = 1
+                    }
+                    else {
+                        resultados.__otras? resultados.__otras++ : resultados.__otras = 1
+                    }
+                }
+                resultados._cantidadCaracteres = cantidadCaracteres
+                console.log({...resultados}) // { a: 1, b: 2 } -> ...{ a: 1, b: 2 } (SPREAD OPERATOR) -> a: 1, b: 2
+                //console.log(resultados)
+                
+                // OBJECT MERGE (con SPREAD OPERATOR)
+                //  var obj1 = { a:1, b:2, c:3 }
+                //  var obj2 = { d:4, e:5, f:6, b:22, c:33 }
+                //  var objT = { ...obj1, ...obj2 } -> { ...{ a:1, b:2, c:3 }, ...{ d:4, e:5, f:6, b:22, c:33 }  } ->
+                //  {  a:1, b:2, c:3 , d:4, e:5, f:6, b:22, c:33 } -> {  a:1, d:4, e:5, f:6, b:22, c:33 }
+
+                // ARRAY MERGE (con SPREAD OPERATOR)
+                // var array1 = [1,2,3]
+                // var array2 = [4,5,6]
+                // var arrayT = [...array1, ...array2] -> [...[1,2,3], ...[4,5,6]] -> [1,2,3,4,5,6]
+                // --------------------------------------------------------------------------------------
+
+                let totalPorciento = 0
+                for(let letra in resultados) {
+                    if(letra != '_cantidadCaracteres') {
+                        let porcentaje = Number((resultados[letra] * 100 / resultados._cantidadCaracteres).toFixed(3))
+                        resultados[letra] = porcentaje + '%'
+                        totalPorciento += porcentaje
+                    }
+                }
+                resultados.__totalPorciento = Math.round(totalPorciento) + '%'
+                //console.log({...resultados})
+                console.log(resultados)
+            }
+        })
+        xhr.send()
+
+    </script>
+
+</body>
+
+</html>
